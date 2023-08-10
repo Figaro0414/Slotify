@@ -8,6 +8,7 @@ class Song(models.Model):
 
     def __str__(self):
         return f'{self.name}'
+    
 class Playlist(models.Model):
     title = models.CharField(max_length=255)
     private = models.BooleanField(default=False)
