@@ -36,11 +36,13 @@ class A_playlist(APIView):
                 a_playlist.song.add(song)
                 print("in the if statement")
                 return Response(True)
-            else:
+            elif method == "remove":
                 print("Not in the if statement")
                 song = get_object_or_404(Song, name = songID)
                 a_playlist.song.remove(song)
                 return Response(False)
+            else:
+                return Response(status=HTTP_400_BAD_REQUEST)
         except:
             return Response(status=HTTP_400_BAD_REQUEST)
         
