@@ -51,16 +51,17 @@ export function ArtistPage() {
         if (artistData.length !== 0){
             setImgUrl(artistData.images[0].url)
         }
-    },[albumsData])
+    },[albumsData, imgUrl])
     return (
         <>
-            <h1 className="text-center">{artistData.name}</h1>
-            <img src={imgUrl}/>
+            <h1 className="text-center text-2xl">{artistData.name}</h1>
+            <img className="object-cover h-20 w-20" src={imgUrl}/>
             <h2 className="text-center">Albums</h2>
             <ol>
                 {albumsData ? (
                         albumsData.map((album, idx) => (
                             <li key={idx}>
+                                <img className="object-cover h-20 w-20" src={album.images[0].url}/>
                                 <Link to={`/album/${album.id}`}>{album.name}</Link>
                             </li>
                         ))

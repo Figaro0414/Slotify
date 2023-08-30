@@ -9,6 +9,8 @@ import { ArtistPage } from "./pages/ArtistsPage";
 import { AlbumPage } from "./pages/AlbumPage";
 import { RegisterPage } from "./pages/SignUp";
 import { SignInPage } from "./pages/SignIn";
+import { AllSongs } from "./pages/AllSongs";
+import { PlaylistSongs } from "./pages/PlaylistSongs";
 
 export const router = createBrowserRouter([
     {
@@ -47,6 +49,13 @@ export const router = createBrowserRouter([
             {
                 path:"album/:name",
                 element: <AlbumPage />
+            },
+            {
+                path:"allsongs/",
+                element: <AllSongs />
+            }, {
+                path:"playlistsongs/:id",
+                element: <PlaylistSongs />
             }
         ]
     }

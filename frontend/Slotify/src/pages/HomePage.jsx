@@ -17,6 +17,7 @@ export function HomePage() {
                     }
                 });
                 const availableGenres = response.data.playlists.items;
+                // console.log(availableGenres)
                 return  setPlaylistsData(availableGenres)
             } catch (error) {
                 console.log(error);
@@ -28,18 +29,19 @@ export function HomePage() {
     }, [token]); 
 
     return (
-        <div className="border-solid border-2 border-sky-500">
+        <div className="border-solid border-2 border-sky-500 text-white h-">
             <h1 className="text-bold text-center">Home Page</h1>
-            <ol>
+            <ol className="flex flex-wrap space-x-4 text-center">
                 {playlistsData ? (
                     playlistsData.map((playlist, idx) => (
-                        <li key={idx}>
+                        <li className="my-4 rounded-lg border-2 border-green-600 w-fit" key={idx}>
+                            <img src={playlist.images[0].url} className="object-scale-down h-48 w-48" />
                             <Link to={`/playlistPage/${playlist.id}`}>{playlist.name}</Link>
                         </li>
                     ))
-                ) : (
+                ) : 
                     <p>Loading playlists...</p>
-                )}
+                }
             </ol>
         </div>
     )

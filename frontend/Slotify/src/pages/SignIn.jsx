@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { userContext } from "../App";
 import { useNavigate } from "react-router-dom";
 import { backEndApi } from "../utilities";
@@ -16,13 +16,16 @@ export const SignInPage = () => {
         }).catch((error) =>{
             alert("Incorrect Credentials")
         })
-        let user = response.data.user
+        let user = response.data.SlotifyUser
         let token = response.data.token
         setUser(user)
         localStorage.setItem("token", token)
         backEndApi.defaults.headers.common["Authorization"] = `Token ${token}`
         navigate("/home")
     }
+    useEffect(()=>{
+
+    },[])
 
     return (
         <div className="flex justify-center bg-slate-950 text-white">
